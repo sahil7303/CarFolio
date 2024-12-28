@@ -18,14 +18,22 @@ const SearchManufacturer = ({ manufacturer, setManuFacturer }: SearchManuFacture
             .includes(query.toLowerCase().replace(/\s+/g, ""))
         );
 
+  // const handleChangeManufacturer = (val: string) => {
+  //   setManuFacturer(val); // Use the setter function to update the state
+  //   console.log({ manufacturer: val }); // Log the selected manufacturer
+  // };
+
   return (
     <div className='search-manufacturer'>
-      <Combobox value={manufacturer} onChange={setManuFacturer}>
+      <Combobox value={manufacturer} onChange={(event)=>{
+        setManuFacturer(event);
+        console.log('Manufacturer Selected:', event);
+      }}>
         <div className='relative w-full'>
           {/* Button for the combobox. Click on the icon to see the complete dropdown */}
           <Combobox.Button className='absolute top-[14px]'>
             <Image
-              src='/car-logo.svg'
+              src='./car-logo.svg'
               width={20}
               height={20}
               className='ml-4'
